@@ -2,7 +2,7 @@
 
 * um site que gera Historias ficticias!
 * Foi usado apenas HTML, CSS e Java Script puro
-* Link do site https://dulipe.github.io/API-times/
+* Link do site https://dulipe.github.io/Gerador-de-Historias/
 
 
 
