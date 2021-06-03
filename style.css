@@ -54,6 +54,25 @@ button:hover {
     color: blue;
 }
 
+#historia {
+    color: white;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, 0.137);
+    margin: auto;
+    margin-top: 10%;
+    padding: 2%;
+    width: 50%;
+}
+
+#frases {
+    color: black;
+}
+
+a {
+    color: white;
+    margin-top: 50px;
+}
+
 
 /* Responsividade*/
 @media screen and (max-width:800px){
