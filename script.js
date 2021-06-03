@@ -24,34 +24,108 @@ function montarHistoria() {
 
         const sequestro = `no ano de ${ano} a princesa Minerva vai completar 18 anos e assumir o trono da Inglaterra, no entanto um exercito revolucionario junto com seus vassalos ${vilao} sequestraram a princesa antes do seu decimo oitavo aniversario, a Rainha Elizabeth quando soube do ${tema}, chamou o seu melhor comandante do exército, o General ${protagonista} tambem conhecido como o grande ${classe} que morava ${local}, o general ${protagonista} possuia ${armamento} e com seu exercito leal a rainha, derrotou facilmente o exercito revolucionario e salvou a princesa Minerva.`
 
-        const reliquia = `${protagonista} se reuniu com Harry Potter, Hermione Granger e Ronald Wesley em busca das ${tema} que eles desconfiavam que estava ${local}. No ano de ${ano}, eles foram ate la e descobriram que as reliquias eram protegidas por Lord Voldemort e seus ${vilao}, mas como ${protagonista} era um ${classe} muito bom com ${armamento}, derrotou lord Voldemort e seus ${vilao}, conseguindo assim a posse das ${tema}.`
+        const reliquia = `${protagonista} se reuniu com Harry Potter, Hermione Granger e Ronald Wesley em busca das ${tema} que eles desconfiavam que estava ${local}. No ano de ${ano}, eles foram ate la e descobriram que as reliquias eram protegidas por Lord Voldemort e seus ${vilao}, mas como ${protagonista} era um ${classe} muito bom com ${armamento}, ele derrotou lord Voldemort e seus ${vilao}, conseguindo assim a posse das ${tema}.`
 
+        // Selecionando a Historia e a fonte a partir da escolha do tema
 
-        // Selecionando a Historia a partir da escolha do tema
-
-        let history = tema
-        let historia;
+        let historia = ''
+        let font = ''
 
         switch(tema) {
             case 'RELIQUIAS DA MORTE':
                 historia = reliquia
+                font = "'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"
                 break
             case 'T-VIRUS':
                 historia = virus
+                font = "monospace"
                 break
             case 'MORTE DE MERLIN':
                 historia = morte
+                font = "Mate SC"
                 break
             case 'ASSASSINATO DE JESSE JAMES':
                 historia = assassinato
+                font = "'Noto Sans SC'"
                 break
             case 'ROUBO DO TESOURO':
                 historia = roubo
+                font = "'Abel'"
                 break
             case 'SEQUESTRO DA PRINCESA':
                 historia = sequestro
+                font = "'Patrick Hand', cursive"
                 break    
         }
+        
+        // configuração para o texto ser digitado pausadamente
+
+        var i = 0;
+        var txt = historia /* The text */
+        var speed = 50; /* The speed/duration of the effect in milliseconds */
+ 
+        function typeWriter() {
+            if (i < txt.length) {
+            paragrafo.innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+            }
+        }
+
+        // selecionando imagens de background de acordo com o vilão
+
+        let backImages = []
+        
+        switch (vilao) {
+            case 'BRUXOS':
+                backImages.push('./imagens/bruxos/bruxo1.jpg')
+                backImages.push('./imagens/bruxos/bruxo2.jpg')
+                backImages.push('./imagens/bruxos/bruxo3.jpg')
+                backImages.push('./imagens/bruxos/bruxo4.jpg')
+                break  
+            case 'ZUMBIS':
+                backImages.push('./imagens/zumbis/zumbi1.jpg')
+                backImages.push('./imagens/zumbis/zumbi2.jpg')
+                backImages.push('./imagens/zumbis/zumbi3.jpg')
+                backImages.push('./imagens/zumbis/zumbi4.jpg')
+                break  
+            case 'FANTASMAS':
+                backImages.push('./imagens/fantasmas/fantasma1.jpg')
+                backImages.push('./imagens/fantasmas/fantasma2.jpg')
+                backImages.push('./imagens/fantasmas/fantasma3.jpg')
+                backImages.push('./imagens/fantasmas/fantasma4.jpg')
+                break  
+            case 'PIRATAS':
+                backImages.push('./imagens/piratas/pirata1.jpg')
+                backImages.push('./imagens/piratas/pirata2.jpg')
+                backImages.push('./imagens/piratas/pirata3.jpg')
+                backImages.push('./imagens/piratas/pirata4.jpg')
+                break  
+            case 'DRAGÕES':
+                backImages.push('./imagens/dragões/dragao1.jpg')
+                backImages.push('./imagens/dragões/dragao2.jpg')
+                backImages.push('./imagens/dragões/dragao3.jpg')
+                backImages.push('./imagens/dragões/dragao4.jpg')
+                break  
+            case 'GNOMOS':
+                backImages.push('./imagens/gnomos/gnomo1.jpg')
+                backImages.push('./imagens/gnomos/gnomo2.jpg')
+                backImages.push('./imagens/gnomos/gnomo3.jpg')
+                backImages.push('./imagens/gnomos/gnomo4.jpg')
+                break  
+        }
+
+        function changeBG(){
+            var randomBack = Math.floor(Math.random() * backImages.length)
+            document.body.style.backgroundImage = `url('${backImages[randomBack]}')`
+
+            setInterval(()=>{
+                var randomBack = Math.floor(Math.random() * backImages.length)
+                document.body.style.backgroundImage = `url('${backImages[randomBack]}')`
+            }, 5000)
+        }
+
+        // apendendo as informações no html
 
         let body = document.querySelector('body')
         let paragrafo = document.createElement('p')
@@ -60,12 +134,12 @@ function montarHistoria() {
         btn.innerText = 'Gerar outra História'
         btn.setAttribute('href', './index.html')
         div.setAttribute('id', 'historia')
+        div.style.fontFamily = font
         body.innerHTML = ''
-        paragrafo.append(historia)
+        paragrafo.addEventListener('onload', typeWriter())
         div.append(paragrafo, btn)
         body.appendChild(div)
-        
-        
+        body.addEventListener('onload', changeBG())             
     }
 }
 

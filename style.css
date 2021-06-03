@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
 * {
     margin: 0;
@@ -57,11 +60,12 @@ button:hover {
 #historia {
     color: white;
     border: 2px solid white;
-    background-color: rgba(0, 0, 0, 0.137);
+    background-color: rgba(0, 0, 0, 0.774);
     margin: auto;
     margin-top: 10%;
     padding: 2%;
     width: 50%;
+    font-size: 20px;
 }
 
 #frases {
